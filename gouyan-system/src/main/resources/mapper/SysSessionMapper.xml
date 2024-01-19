@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysSessionMapper">
 
-    <resultMap id="SysSessionResult" type="SysSession">
+    <resultMap id="SysSessionResult" type="com.gouyan.system.domin.SysSession">
         <id property="sessionId" column="session_id"></id>
         <result property="cinemaId" column="cinema_id"></result>
         <result property="hallId" column="hall_id"></result>
@@ -23,7 +23,7 @@
         <association property="sysMovieRuntime" column="movie_runtime_id" select="com.gouyan.system.mapper.SysMovieRuntimeMapper.findById"></association>
     </resultMap>
 
-    <resultMap id="SysSessionMap" type="SysSession">
+    <resultMap id="SysSessionMap" type="com.gouyan.system.domin.SysSession">
         <id property="sessionId" column="session_id"></id>
         <result property="cinemaId" column="cinema_id"></result>
         <result property="hallId" column="hall_id"></result>
@@ -51,7 +51,7 @@
         </association>
     </resultMap>
 
-    <select id="findByVo" parameterType="SysSessionVo" resultMap="SysSessionResult">
+    <select id="findByVo" parameterType="com.gouyan.system.domin.vo.SysSessionVo" resultMap="SysSessionResult">
         select * from sys_session se
         left join sys_cinema ci on se.cinema_id = ci.cinema_id
         left join sys_hall ha on se.cinema_id = ha.cinema_id and se.hall_id = ha.hall_id
@@ -70,11 +70,11 @@
         select * from sys_session where session_id = #{id}
     </select>
 
-    <select id="findOne" parameterType="long" resultType="SysSession">
+    <select id="findOne" parameterType="long" resultType="com.gouyan.system.domin.SysSession">
         select * from sys_session where session_id = #{id}
     </select>
 
-    <update id="add" parameterType="SysSession">
+    <update id="add" parameterType="com.gouyan.system.domin.SysSession">
         <!-- 将添加后的主键id传回原对象 -->
         <selectKey keyProperty="sessionId" keyColumn="session_id" resultType="long" order="AFTER">
             select last_insert_id();
@@ -90,7 +90,7 @@
         )
     </update>
 
-    <update id="update" parameterType="SysSession">
+    <update id="update" parameterType="com.gouyan.system.domin.SysSession">
         update sys_session
         set
         <if test="hallId != null and hallId != 0">hall_id = #{hallId},</if>

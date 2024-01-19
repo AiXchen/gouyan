@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysCinemaBrand;
+import com.gouyan.system.service.SysCinemaBrandService;
 import com.gouyan.system.service.impl.SysCinemaBrandServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 public class SysCinemaBrandController extends BaseController {
     @Autowired
-    private SysCinemaBrandServiceImpl sysCinemaBrandService;
+    private SysCinemaBrandService sysCinemaBrandService;
 
     @GetMapping("/sysCinemaBrand")
     public ResponseResult findAll(){

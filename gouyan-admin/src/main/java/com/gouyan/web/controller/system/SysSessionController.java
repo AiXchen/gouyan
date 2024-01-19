@@ -3,6 +3,7 @@ package com.gouyan.web.controller.system;
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysSessionVo;
+import com.gouyan.system.service.SysSessionService;
 import com.gouyan.system.service.impl.SysSessionServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class SysSessionController extends BaseController {
 
     @Autowired
-    private SysSessionServiceImpl sysSessionService;
+    private SysSessionService sysSessionService;
 
     /**
      * 根据vo中的条件查询所有场次，如果在前台购票部分注意设置pageSize=100或者其他大一些的数

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysMovieMapper">
 
-    <resultMap id="SysMovieResult" type="SysMovie">
+    <resultMap id="SysMovieResult" type="com.gouyan.system.domin.SysMovie">
         <id property="movieId" column="movie_id"></id>
         <result property="movieAreaId" column="movie_area_id"></result>
         <result property="movieAgeId" column="movie_age_id"></result>
@@ -13,7 +13,7 @@
         <collection property="movieCategoryList" column="movie_id" select="com.gouyan.system.mapper.SysMovieCategoryMapper.findByMovieId"></collection>
     </resultMap>
 
-    <resultMap id="MovieMap" type="SysMovie">
+    <resultMap id="MovieMap" type="com.gouyan.system.domin.SysMovie">
         <id property="movieId" column="movie_id"></id>
         <result property="movieNameCn" column="movie_name_cn"></result>
         <result property="movieNameEn" column="movie_name_en"></result>
@@ -29,10 +29,10 @@
         <result property="moviePictures" column="movie_pictures"></result>
         <association property="sysMovieArea" column="movie_area_id" select="com.gouyan.system.mapper.SysMovieAreaMapper.findById"></association>
         <association property="sysMovieAge" column="movie_age_id" select="com.gouyan.system.mapper.SysMovieAgeMapper.findById"></association>
-        <collection property="actorRoleList" ofType="SysActorRole">
+        <collection property="actorRoleList" ofType="com.gouyan.system.domin.SysActorRole">
             <id property="actorRoleId" column="actor_role_id"></id>
             <result property="actorRoleName" column="actor_role_name"></result>
-            <collection property="actorList" ofType="SysActor">
+            <collection property="actorList" ofType="com.gouyan.system.domin.SysActor">
                 <id property="actorId" column="actor_id"></id>
                 <result property="actorName" column="actor_name"></result>
                 <result property="actorPhoto" column="actor_photo"></result>
@@ -47,11 +47,11 @@
                 <result property="actorInformation" column="actor_information"></result>
             </collection>
         </collection>
-        <collection property="movieCommentList" ofType="SysMovieComment" column="movie_id" select="com.gouyan.system.mapper.SysMovieCommentMapper.findByMovieId"></collection>
-        <collection property="movieCategoryList" ofType="SysMovieCategory" column="movie_id" select="com.gouyan.system.mapper.SysMovieCategoryMapper.findByMovieId"></collection>
+        <collection property="movieCommentList" ofType="com.gouyan.system.domin.SysMovieComment" column="movie_id" select="com.gouyan.system.mapper.SysMovieCommentMapper.findByMovieId"></collection>
+        <collection property="movieCategoryList" ofType="com.gouyan.system.domin.SysMovieCategory" column="movie_id" select="com.gouyan.system.mapper.SysMovieCategoryMapper.findByMovieId"></collection>
     </resultMap>
 
-    <resultMap id="CinemaMovieMap" type="SysMovie">
+    <resultMap id="CinemaMovieMap" type="com.gouyan.system.domin.SysMovie">
         <id property="movieId" column="movie_id"></id>
         <result property="movieNameCn" column="movie_name_cn"></result>
         <result property="movieNameEn" column="movie_name_en"></result>
@@ -67,12 +67,12 @@
         <result property="moviePictures" column="movie_pictures"></result>
         <association property="sysMovieArea" column="movie_area_id" select="com.gouyan.system.mapper.SysMovieAreaMapper.findById"></association>
         <association property="sysMovieAge" column="movie_age_id" select="com.gouyan.system.mapper.SysMovieAgeMapper.findById"></association>
-        <collection property="movieCategoryList" ofType="SysMovieCategory" column="movie_id" select="com.gouyan.system.mapper.SysMovieCategoryMapper.findByMovieId"></collection>
+        <collection property="movieCategoryList" ofType="com.gouyan.system.domin.SysMovieCategory" column="movie_id" select="com.gouyan.system.mapper.SysMovieCategoryMapper.findByMovieId"></collection>
         <collection property="majorActorNameList" ofType="String" column="movie_id" select="com.gouyan.system.mapper.SysActorMapper.findaMajorActorNames"></collection>
     </resultMap>
 
 
-    <select id="findAll" resultMap="CinemaMovieMap" parameterType="SysMovieVo">
+    <select id="findAll" resultMap="CinemaMovieMap" parameterType="com.gouyan.system.domin.vo.SysMovieVo">
         select sm.* from sys_movie sm
         <if test="movieCategoryId != null and movieCategoryId > 0">
             join sys_movie_to_category smtc on sm.movie_id = smtc.movie_id
@@ -107,11 +107,11 @@
     </select>
 
     <!--根据id查询单个电影信息，不需要相关的额外信息-->
-    <select id="findOne" resultType="SysMovie" parameterType="long">
+    <select id="findOne" resultType="com.gouyan.system.domin.SysMovie" parameterType="long">
         select * from sys_movie where movie_id = #{id}
     </select>
 
-    <update id="add" parameterType="SysMovie">
+    <update id="add" parameterType="com.gouyan.system.domin.SysMovie">
         <!-- 将添加后的主键id传回原对象 -->
         <selectKey keyProperty="movieId" keyColumn="movie_id" resultType="long" order="AFTER">
             select last_insert_id();
@@ -146,7 +146,7 @@
         )
     </update>
 
-    <update id="update" parameterType="SysMovie">
+    <update id="update" parameterType="com.gouyan.system.domin.SysMovie">
         update sys_movie
         set
         <if test=" movieNameCn != null and movieNameCn != ''">movie_name_cn = #{movieNameCn},</if>
@@ -200,7 +200,7 @@
         where sm.movie_area_id in (1, 5, 6) and sm.release_date &lt;= curdate()
         order by sm.movie_box_office desc
     </select>
-    
+
     <!-- 欧美票房榜：已上映的欧美电影中，按票房取前10 -->
     <select id="europeanAndAmericanBoxOfficeList" resultMap="CinemaMovieMap">
         select sm.* from sys_movie sm

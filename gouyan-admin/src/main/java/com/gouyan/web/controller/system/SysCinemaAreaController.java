@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysCinemaArea;
+import com.gouyan.system.service.SysCinemaAreaService;
 import com.gouyan.system.service.impl.SysCinemaAreaServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class SysCinemaAreaController extends BaseController {
 
     @Autowired
-    private SysCinemaAreaServiceImpl sysCinemaAreaService;
+    private SysCinemaAreaService sysCinemaAreaService;
 
     @GetMapping("/sysCinemaArea")
     public ResponseResult findAll(){

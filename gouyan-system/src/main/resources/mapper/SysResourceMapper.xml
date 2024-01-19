@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysResourceMapper">
 
-    <resultMap id="findAllMap" type="SysResource">
+    <resultMap id="findAllMap" type="com.gouyan.system.domin.SysResource">
         <id property="id" column="resource_id"></id>
         <result property="name" column="resource_name"></result>
         <result property="path" column="path"></result>
@@ -19,13 +19,13 @@
         </association>
     </resultMap>
 
-    <resultMap id="findWithChildrenMap" type="SysResource">
+    <resultMap id="findWithChildrenMap" type="com.gouyan.system.domin.SysResource">
         <id property="id" column="resource_id"></id>
         <result property="name" column="resource_name"></result>
         <result property="path" column="path"></result>
         <result property="level" column="level"></result>
         <result property="parentId" column="parent_id"></result>
-        <collection property="children" column="resource_id" ofType="SysResource">
+        <collection property="children" column="resource_id" ofType="com.gouyan.system.domin.SysResource">
             <id property="id" column="cid"></id>
             <result property="name" column="cname"></result>
             <result property="path" column="cpath"></result>
@@ -34,19 +34,19 @@
         </collection>
     </resultMap>
 
-    <resultMap id="allChildrenMap" type="SysResource">
+    <resultMap id="allChildrenMap" type="com.gouyan.system.domin.SysResource">
         <id property="id" column="resource_id"></id>
         <result property="name" column="resource_name"></result>
         <result property="path" column="path"></result>
         <result property="level" column="level"></result>
         <result property="parentId" column="parent_id"></result>
-        <collection property="children" column="resource_id" ofType="SysResource">
+        <collection property="children" column="resource_id" ofType="com.gouyan.system.domin.SysResource">
             <id property="id" column="sid"></id>
             <result property="name" column="sname"></result>
             <result property="path" column="spath"></result>
             <result property="level" column="slevel"></result>
             <result property="parentId" column="sparent_id"></result>
-            <collection property="children" column="resource_id" ofType="SysResource">
+            <collection property="children" column="resource_id" ofType="com.gouyan.system.domin.SysResource">
                 <id property="id" column="gsid"></id>
                 <result property="name" column="gsname"></result>
                 <result property="path" column="gspath"></result>
@@ -66,7 +66,7 @@
         from sys_resource sr join sys_resource sr1 on sr.resource_id = sr1.parent_id where sr.level = 1
     </select>
 
-    <select id="findByParentId" resultType="SysResource">
+    <select id="findByParentId" resultType="com.gouyan.system.domin.SysResource">
         select * from sys_resource where parent_id = #{id}
     </select>
 
@@ -83,7 +83,7 @@
         from sys_resource sr left join sys_resource sr1 on sr.parent_id = sr1.resource_id where sr.resource_id = #{id}
     </select>
 
-    <update id="add" parameterType="SysResource">
+    <update id="add" parameterType="com.gouyan.system.domin.SysResource">
         insert into sys_resource(
         <if test="id != null and id != 0">resource_id, </if>
         resource_name, path, level, parent_id)
@@ -92,7 +92,7 @@
         #{name}, #{path}, #{level}, #{parentId})
     </update>
 
-    <update id="update" parameterType="SysResource">
+    <update id="update" parameterType="com.gouyan.system.domin.SysResource">
         update sys_resource set resource_name = #{name}, path = #{path}, level = #{level}, parent_id = #{parentId} where resource_id = #{id}
     </update>
 

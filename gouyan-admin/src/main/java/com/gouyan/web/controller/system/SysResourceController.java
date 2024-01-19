@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysResource;
+import com.gouyan.system.service.SysResourceService;
 import com.gouyan.system.service.impl.SysResourceServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 public class SysResourceController extends BaseController {
 
     @Autowired
-    SysResourceServiceImpl sysResourceService;
+    private SysResourceService sysResourceService;
 
     @GetMapping("/sysResource")
     public ResponseResult findAll(){

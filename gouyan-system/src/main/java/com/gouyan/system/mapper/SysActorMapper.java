@@ -1,5 +1,6 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysActor;
 import com.gouyan.system.domin.SysUser;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author lxd
  * @create 2020-11-23 15:34
  */
-public interface SysActorMapper {
+public interface SysActorMapper extends MPJBaseMapper<SysActor>{
     List<SysActor> findAll(SysActor sysActor);
 
     SysActor findById(Long id);

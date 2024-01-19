@@ -1,5 +1,6 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysCinema;
 import com.gouyan.system.domin.vo.SysCinemaVo;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author lxd
  * @create 2020-11-25 22:24
  */
-public interface SysCinemaService {
+public interface SysCinemaService extends IService<SysCinema> {
 
     List<SysCinema> findAll(SysCinemaVo sysCinemaVo);
 

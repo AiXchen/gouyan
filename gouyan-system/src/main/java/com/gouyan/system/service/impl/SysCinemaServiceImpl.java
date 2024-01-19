@@ -1,5 +1,6 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.system.domin.SysCinema;
 import com.gouyan.system.domin.vo.SysCinemaVo;
 import com.gouyan.system.mapper.SysCinemaMapper;
@@ -14,7 +15,7 @@ import java.util.List;
  * @create 2020-11-25 22:24
  */
 @Service
-public class SysCinemaServiceImpl implements SysCinemaService {
+public class SysCinemaServiceImpl extends ServiceImpl<SysCinemaMapper,SysCinema> implements SysCinemaService{
 
     @Autowired
     private SysCinemaMapper sysCinemaMapper;

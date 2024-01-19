@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysHallCategory;
+import com.gouyan.system.service.SysHallCategoryService;
 import com.gouyan.system.service.impl.SysHallCategoryServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 @RestController
 public class SysHallCategoryController extends BaseController {
     @Autowired
-    private SysHallCategoryServiceImpl sysHallCategoryService;
+    private SysHallCategoryService sysHallCategoryService;
 
     @GetMapping("/sysHallCategory")
     public ResponseResult findAll(){

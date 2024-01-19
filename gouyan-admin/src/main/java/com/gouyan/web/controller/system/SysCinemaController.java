@@ -4,6 +4,8 @@ import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysCinema;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysCinemaVo;
+import com.gouyan.system.service.SysCinemaService;
+import com.gouyan.system.service.SysSessionService;
 import com.gouyan.system.service.impl.SysCinemaServiceImpl;
 import com.gouyan.system.service.impl.SysSessionServiceImpl;
 import com.gouyan.web.controller.BaseController;
@@ -22,10 +24,10 @@ import java.util.List;
 public class SysCinemaController extends BaseController {
 
     @Autowired
-    private SysCinemaServiceImpl sysCinemaService;
+    private SysCinemaService sysCinemaService;
 
     @Autowired
-    private SysSessionServiceImpl sysSessionService;
+    private SysSessionService sysSessionService;
 
     @GetMapping("/sysCinema")
     public ResponseResult findAll(SysCinemaVo sysCinemaVo){

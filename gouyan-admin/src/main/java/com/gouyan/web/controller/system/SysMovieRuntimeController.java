@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysMovieRuntime;
+import com.gouyan.system.service.SysMovieRuntimeService;
 import com.gouyan.system.service.impl.SysMovieRuntimeServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class SysMovieRuntimeController extends BaseController {
 
     @Autowired
-    SysMovieRuntimeServiceImpl sysMovieRuntimeService;
+    private SysMovieRuntimeService sysMovieRuntimeService;
 
     @GetMapping("/sysMovieRuntime")
     public ResponseResult findAll(){

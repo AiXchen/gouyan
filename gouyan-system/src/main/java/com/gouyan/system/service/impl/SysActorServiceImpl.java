@@ -1,5 +1,6 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.system.domin.SysActor;
 import com.gouyan.system.mapper.SysActorMapper;
 import com.gouyan.system.service.SysActorService;
@@ -14,7 +15,7 @@ import java.util.List;
  */
 
 @Service
-public class SysActorServiceImpl implements SysActorService {
+public class SysActorServiceImpl extends ServiceImpl<SysActorMapper,SysActor> implements SysActorService {
 
     @Autowired
     private SysActorMapper sysActorMapper;

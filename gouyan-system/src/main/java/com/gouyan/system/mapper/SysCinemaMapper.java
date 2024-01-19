@@ -1,5 +1,6 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysCinema;
 import com.gouyan.system.domin.vo.SysCinemaVo;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @author lxd
  * @create 2020-11-25 22:23
  */
-public interface SysCinemaMapper {
+public interface SysCinemaMapper extends MPJBaseMapper<SysCinema> {
 
     List<SysCinema> findAll(SysCinemaVo sysCinemaVo);
 

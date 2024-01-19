@@ -13,9 +13,22 @@
 	<description>系统代码模块</description>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>com.gouyan</groupId>
 			<artifactId>gouyan-common</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.yulichang</groupId>
+			<artifactId>mybatis-plus-join-boot-starter</artifactId>
+			<version>${mybatis-join.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -1,5 +1,6 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.vo.SysMovieVo;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-22 15:56
  */
-public interface SysMovieService {
+public interface SysMovieService extends IService<SysMovie> {
 
     List<SysMovie> findAll(SysMovieVo sysMovieVo);
 

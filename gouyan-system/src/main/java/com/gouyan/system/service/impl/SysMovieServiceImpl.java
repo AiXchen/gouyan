@@ -1,5 +1,6 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.vo.SysMovieVo;
 import com.gouyan.system.mapper.SysMovieMapper;
@@ -9,12 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @Author: 华雨欣
- * @Create: 2020-11-22 15:58
- */
+
 @Service
-public class SysMovieServiceImpl implements SysMovieService {
+public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> implements SysMovieService{
 
     @Autowired
     private SysMovieMapper sysMovieMapper;

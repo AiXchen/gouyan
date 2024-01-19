@@ -1,5 +1,6 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.vo.SysMovieVo;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-22 10:00
  */
-public interface SysMovieMapper {
+public interface SysMovieMapper extends MPJBaseMapper<SysMovie> {
 
     /**
      * 按照传入对象的参数进行条件分页查询

@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysUserHobby;
+import com.gouyan.system.service.SysUserHobbyService;
 import com.gouyan.system.service.impl.SysUserHobbyServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 public class SysUserHobbyController extends BaseController {
 
     @Autowired
-    SysUserHobbyServiceImpl sysUserHobbyService;
+    private SysUserHobbyService sysUserHobbyService;
 
     @GetMapping("/sysUserHobby")
     public ResponseResult findAll(){

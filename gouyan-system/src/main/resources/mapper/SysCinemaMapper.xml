@@ -5,7 +5,7 @@
 <mapper namespace="com.gouyan.system.mapper.SysCinemaMapper">
 
     <!--column属性：如果没有别名就必须跟字段名一样，有别名就可以跟别名一样，通过别名映射到字段-->
-    <resultMap id="SysCinemaResult" type="SysCinema">
+    <resultMap id="SysCinemaResult" type="com.gouyan.system.domin.SysCinema">
         <id property="cinemaId" column="cinema_id"></id>
         <result property="cinemaName" column="cinema_name"></result>
         <result property="cinemaBrandId" column="cinema_brand_id"></result>
@@ -23,7 +23,7 @@
     </resultMap>
 
     <!-- 查询单个影院的详细信息，包含影院上映的所有电影信息 -->
-    <resultMap id="SysCinemaMap" type="SysCinema">
+    <resultMap id="SysCinemaMap" type="com.gouyan.system.domin.SysCinema">
         <id property="cinemaId" column="cinema_id"></id>
         <result property="cinemaName" column="cinema_name"></result>
         <result property="cinemaBrandId" column="cinema_brand_id"></result>
@@ -41,7 +41,7 @@
     </resultMap>
 
     <!--带条件查询的findAll-->
-    <select id="findAll" resultMap="SysCinemaResult" parameterType="SysCinemaVo">
+    <select id="findAll" resultMap="SysCinemaResult" parameterType="com.gouyan.system.domin.vo.SysCinemaVo">
         select distinct sc.* from sys_cinema sc
         <if test="hallCategoryId != null and hallCategoryId > 0">
             join sys_hall sh on sc.cinema_id = sh.cinema_id
@@ -62,7 +62,7 @@
         select * from sys_cinema where cinema_id = #{cinemaId}
     </select>
 
-    <update id="add" parameterType="SysCinema">
+    <update id="add" parameterType="com.gouyan.system.domin.SysCinema">
         <!-- 将添加后的主键id传回原对象 -->
         <selectKey keyProperty="cinemaAreaId" keyColumn="cinema_area_id" resultType="long" order="AFTER">
             select last_insert_id();
@@ -71,7 +71,7 @@
         values (#{cinemaName}, #{cinemaBrandId}, #{cinemaPicture}, #{isTicketChanged}, #{isRefunded}, #{cinemaAreaId}, #{cinemaAddress}, #{userId}, #{entryDate})
     </update>
 
-    <update id="update" parameterType="SysCinema">
+    <update id="update" parameterType="com.gouyan.system.domin.SysCinema">
         update sys_cinema set
         cinema_name = #{cinemaName}, cinema_brand_id = #{cinemaBrandId}, cinema_picture = #{cinemaPicture}, is_ticket_changed = #{isTicketChanged},
         is_refunded = #{isRefunded}, cinema_area_id = #{cinemaAreaId}, cinema_address = #{cinemaAddress}, user_id = #{userId}, entry_date = #{entryDate}

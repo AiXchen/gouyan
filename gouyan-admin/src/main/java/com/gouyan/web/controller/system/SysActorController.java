@@ -3,6 +3,7 @@ package com.gouyan.web.controller.system;
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysActor;
 import com.gouyan.system.domin.SysMovie;
+import com.gouyan.system.service.SysActorService;
 import com.gouyan.system.service.impl.SysActorServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.List;
 @RestController
 public class SysActorController extends BaseController {
     @Autowired
-    private SysActorServiceImpl sysActorService;
+    private SysActorService sysActorService;
 
     @GetMapping("/sysActor")
     public ResponseResult findAll(SysActor sysActor){

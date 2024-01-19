@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysBillMapper">
 
-    <resultMap id="BillMap" type="SysBill">
+    <resultMap id="BillMap" type="com.gouyan.system.domin.SysBill">
         <id property="billId" column="bill_id"></id>
         <result property="userId" column="user_id"></result>
         <result property="sessionId" column="session_id"></result>
@@ -12,7 +12,7 @@
         <association property="sysUser" column="user_id" select="com.gouyan.system.mapper.SysUserMapper.findById"></association>
     </resultMap>
 
-    <select id="findAll" parameterType="SysBill" resultMap="BillMap">
+    <select id="findAll" parameterType="com.gouyan.system.domin.SysBill" resultMap="BillMap">
         select * from sys_bill
         <where>
             <if test="billState != null"> and bill_state = #{billState} </if>
@@ -25,7 +25,7 @@
         select * from sys_bill where bill_id = #{id}
     </select>
 
-    <update id="add" parameterType="SysBill">
+    <update id="add" parameterType="com.gouyan.system.domin.SysBill">
         <!-- 将添加后的主键id传回原对象 -->
         <selectKey keyProperty="billId" keyColumn="bill_id" resultType="long" order="AFTER">
             select last_insert_id();
@@ -41,7 +41,7 @@
         )
     </update>
 
-    <update id="update" parameterType="SysBill">
+    <update id="update" parameterType="com.gouyan.system.domin.SysBill">
         update sys_bill set
         <if test="billState != null">bill_state = #{billState}, </if>
         <if test="seats != null and seats != ''">seats = #{seats}, </if>

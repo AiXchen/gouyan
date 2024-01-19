@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 public class SysMovieAreaController extends BaseController {
     @Autowired
-    SysMovieAreaServiceImpl sysMovieAreaService;
+    private SysMovieAreaService sysMovieAreaService;
 
     @GetMapping("/sysMovieArea")
     public ResponseResult findAll(){

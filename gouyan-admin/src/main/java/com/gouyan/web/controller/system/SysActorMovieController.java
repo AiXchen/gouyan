@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysActorMovie;
+import com.gouyan.system.service.SysActorMovieService;
 import com.gouyan.system.service.impl.SysActorMovieServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class SysActorMovieController extends BaseController {
 
     @Autowired
-    private SysActorMovieServiceImpl sysActorMovieService;
+    private SysActorMovieService sysActorMovieService;
 
     @GetMapping("/sysActorMovie")
     public ResponseResult findAll(SysActorMovie sysActorMovie){

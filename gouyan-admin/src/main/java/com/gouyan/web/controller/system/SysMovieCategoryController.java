@@ -3,6 +3,7 @@ package com.gouyan.web.controller.system;
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysMovieArea;
 import com.gouyan.system.domin.SysMovieCategory;
+import com.gouyan.system.service.SysMovieCategoryService;
 import com.gouyan.system.service.impl.SysMovieCategoryServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.util.List;
 public class SysMovieCategoryController extends BaseController {
 
     @Autowired
-    private SysMovieCategoryServiceImpl sysMovieCategoryService;
+    private SysMovieCategoryService sysMovieCategoryService;
 
     @GetMapping("/sysMovieCategory")
     public ResponseResult findAll(){

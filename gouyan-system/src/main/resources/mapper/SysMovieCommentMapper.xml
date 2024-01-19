@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysMovieCommentMapper">
 
-    <resultMap id="commentResult" type="SysMovieComment">
+    <resultMap id="commentResult" type="com.gouyan.system.domin.SysMovieComment">
         <result property="movieId" column="movie_id"></result>
         <result property="userId" column="user_id"></result>
         <association property="sysUser" column="user_id" select="com.gouyan.system.mapper.SysUserMapper.findById"></association>
@@ -15,7 +15,7 @@
         select * from sys_movie_comment
     </select>
 
-    <select id="findOne" resultType="SysMovieComment" parameterType="SysMovieComment">
+    <select id="findOne" resultType="com.gouyan.system.domin.SysMovieComment" parameterType="com.gouyan.system.domin.SysMovieComment">
         select * from sys_movie_comment where movie_id = #{movieId} and user_id = #{userId} and comment_time = #{commentTime}
     </select>
 
@@ -27,11 +27,11 @@
         select * from sys_movie_comment where user_id = #{id}
     </select>
 
-    <update id="add" parameterType="SysMovieComment">
+    <update id="add" parameterType="com.gouyan.system.domin.SysMovieComment">
         insert into sys_movie_comment(movie_id, user_id, comment_time, content, score) values(#{movieId}, #{userId}, #{commentTime}, #{content}, #{score})
     </update>
 
-    <update id="update" parameterType="SysMovieComment">
+    <update id="update" parameterType="com.gouyan.system.domin.SysMovieComment">
         update sys_movie_comment
         set
         <if test="content != null and content != ''">content = #{content},</if>
@@ -40,7 +40,7 @@
         where movie_id = #{movieId} and user_id = #{userId}
     </update>
 
-    <update id="delete" parameterType="SysMovieComment">
+    <update id="delete" parameterType="com.gouyan.system.domin.SysMovieComment">
         delete from sys_movie_comment where movie_id = #{movieId} and user_id = #{userId} and comment_time = #{commentTime}
     </update>
 </mapper>

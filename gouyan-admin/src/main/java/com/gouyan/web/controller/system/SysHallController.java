@@ -4,6 +4,8 @@ import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysHall;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysSessionVo;
+import com.gouyan.system.service.SysHallService;
+import com.gouyan.system.service.SysSessionService;
 import com.gouyan.system.service.impl.SysHallServiceImpl;
 import com.gouyan.system.service.impl.SysSessionServiceImpl;
 import com.gouyan.web.controller.BaseController;
@@ -23,10 +25,10 @@ import java.util.List;
 public class SysHallController extends BaseController {
 
     @Autowired
-    private SysHallServiceImpl sysHallService;
+    private SysHallService sysHallService;
 
     @Autowired
-    private SysSessionServiceImpl sysSessionService;
+    private SysSessionService sysSessionService;
 
     @GetMapping("/sysHall")
     public ResponseResult findAll(SysHall sysHall){

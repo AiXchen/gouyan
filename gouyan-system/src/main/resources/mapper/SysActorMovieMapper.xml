@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysActorMovieMapper">
 
-    <select id="findAll" parameterType="SysActorMovie" resultType="SysActorMovie">
+    <select id="findAll" parameterType="com.gouyan.system.domin.SysActorMovie" resultType="com.gouyan.system.domin.SysActorMovie">
         select * from sys_actor_movie
         <where>
             <if test="movieId != null and movieId != ''"> and movie_id = #{movieId} </if>
@@ -13,11 +13,11 @@
         </where>
     </select>
 
-    <update id="add" parameterType="SysActorMovie">
+    <update id="add" parameterType="com.gouyan.system.domin.SysActorMovie">
         insert into sys_actor_movie values (#{movieId}, #{actorId}, #{actorRoleId})
     </update>
 
-    <update id="delete" parameterType="SysActorMovie">
+    <update id="delete" parameterType="com.gouyan.system.domin.SysActorMovie">
         delete from sys_actor_movie where movie_id = #{movieId} and actor_id = #{actorId} and actor_role_id = #{actorRoleId}
     </update>
     

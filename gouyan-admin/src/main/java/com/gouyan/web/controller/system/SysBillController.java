@@ -6,6 +6,9 @@ import com.gouyan.system.domin.SysBill;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysBillVo;
+import com.gouyan.system.service.SysBillService;
+import com.gouyan.system.service.SysMovieService;
+import com.gouyan.system.service.SysSessionService;
 import com.gouyan.system.service.impl.SysBillServiceImpl;
 import com.gouyan.system.service.impl.SysMovieServiceImpl;
 import com.gouyan.system.service.impl.SysSessionServiceImpl;
@@ -24,13 +27,13 @@ import java.util.List;
 public class SysBillController extends BaseController {
     
     @Autowired
-    private SysBillServiceImpl sysBillService;
+    private SysBillService sysBillService;
 
     @Autowired
-    private SysSessionServiceImpl sysSessionService;
+    private SysSessionService sysSessionService;
 
     @Autowired
-    private SysMovieServiceImpl sysMovieService;
+    private SysMovieService sysMovieService;
 
     @GetMapping("/sysBill")
     public ResponseResult findAll(SysBill sysBill){

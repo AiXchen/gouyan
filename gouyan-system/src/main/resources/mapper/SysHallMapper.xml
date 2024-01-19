@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gouyan.system.mapper.SysHallMapper">
 
-    <resultMap id="sysHallMap" type="SysHall">
+    <resultMap id="sysHallMap" type="com.gouyan.system.domin.SysHall">
         <result property="cinemaId" column="cinema_id"></result>
         <result property="hallId" column="hall_id"></result>
         <result property="hallCategoryId" column="hall_category_id"></result>
@@ -12,7 +12,7 @@
         <association property="sysHallCategory" column="hall_category_id" select="com.gouyan.system.mapper.SysHallCategoryMapper.findById"></association>
     </resultMap>
 
-    <select id="findAll" resultMap="sysHallMap" parameterType="SysHall">
+    <select id="findAll" resultMap="sysHallMap" parameterType="com.gouyan.system.domin.SysHall">
         select * from sys_hall
         <where>
             <if test="cinemaId != null and cinemaId != 0"> and cinema_id = #{cinemaId} </if>
@@ -22,15 +22,15 @@
         </where>
     </select>
 
-    <select id="findByCinemaIdAndHallId" parameterType="SysHall" resultMap="sysHallMap">
+    <select id="findByCinemaIdAndHallId" parameterType="com.gouyan.system.domin.SysHall" resultMap="sysHallMap">
         select * from sys_hall where cinema_id = #{cinemaId} and hall_id = #{hallId}
     </select>
 
-    <update id="add" parameterType="SysHall">
+    <update id="add" parameterType="com.gouyan.system.domin.SysHall">
         insert into sys_hall values (#{cinemaId}, #{hallId}, #{hallName}, #{hallCategoryId}, #{rowStart}, #{rowNums}, #{seatNumsRow}, #{seatNums}, #{seatState}, #{hallState})
     </update>
 
-    <update id="update" parameterType="SysHall">
+    <update id="update" parameterType="com.gouyan.system.domin.SysHall">
         update sys_hall set
         hall_name = #{hallName},
         hall_category_id = #{hallCategoryId},
@@ -43,7 +43,7 @@
         where cinema_id = #{cinemaId} and hall_id = #{hallId}
     </update>
 
-    <update id="delete" parameterType="SysHall">
+    <update id="delete" parameterType="com.gouyan.system.domin.SysHall">
         delete from sys_hall where cinema_id = #{cinemaId} and hall_id  = #{hallId}
     </update>
 

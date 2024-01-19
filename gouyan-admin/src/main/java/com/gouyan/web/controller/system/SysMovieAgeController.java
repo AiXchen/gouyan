@@ -3,6 +3,7 @@ package com.gouyan.web.controller.system;
 import com.github.pagehelper.PageHelper;
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysMovieAge;
+import com.gouyan.system.service.SysMovieAgeService;
 import com.gouyan.system.service.impl.SysMovieAgeServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ import java.util.List;
 public class SysMovieAgeController extends BaseController {
 
     @Autowired
-    SysMovieAgeServiceImpl sysMovieAgeService;
+    private SysMovieAgeService sysMovieAgeService;
 
     @GetMapping("/sysMovieAge")
     public ResponseResult findAll(){

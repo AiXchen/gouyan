@@ -6,6 +6,7 @@ import com.gouyan.common.utils.StringUtil;
 import com.gouyan.system.domin.LoginUser;
 import com.gouyan.system.domin.SysUser;
 import com.gouyan.system.domin.vo.SysUserVo;
+import com.gouyan.system.service.SysUserService;
 import com.gouyan.system.service.impl.SysUserServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.apache.shiro.SecurityUtils;
@@ -27,7 +28,7 @@ import java.util.List;
 @RestController
 public class SysUserController extends BaseController {
     @Autowired
-    private SysUserServiceImpl sysUserService;
+    private SysUserService sysUserService;
 
     @GetMapping("/sysUser")
     public ResponseResult findAll(SysUser sysUser){

@@ -2,6 +2,7 @@ package com.gouyan.web.controller.system;
 
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysMovieToCategory;
+import com.gouyan.system.service.SysMovieToCategoryService;
 import com.gouyan.system.service.impl.SysMovieToCategoryServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class SysMovieToCategoryController extends BaseController {
 
     @Autowired
-    private SysMovieToCategoryServiceImpl sysMovieToCategoryService;
+    private SysMovieToCategoryService sysMovieToCategoryService;
 
     @GetMapping("/sysMovieToCategory")
     public ResponseResult findAll(SysMovieToCategory sysMovieToCategory){

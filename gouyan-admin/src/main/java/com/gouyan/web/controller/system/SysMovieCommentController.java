@@ -5,6 +5,8 @@ import com.gouyan.common.exception.DataNotFoundException;
 import com.gouyan.common.response.ResponseResult;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.SysMovieComment;
+import com.gouyan.system.service.SysMovieCommentService;
+import com.gouyan.system.service.SysMovieService;
 import com.gouyan.system.service.impl.SysMovieCommentServiceImpl;
 import com.gouyan.system.service.impl.SysMovieServiceImpl;
 import com.gouyan.web.controller.BaseController;
@@ -23,10 +25,10 @@ import java.util.List;
 public class SysMovieCommentController extends BaseController {
 
     @Autowired
-    private SysMovieCommentServiceImpl sysMovieCommentService;
+    private SysMovieCommentService sysMovieCommentService;
 
     @Autowired
-    private SysMovieServiceImpl sysMovieService;
+    private SysMovieService sysMovieService;
 
     @GetMapping("/sysMovieComment")
     public ResponseResult findAll(){

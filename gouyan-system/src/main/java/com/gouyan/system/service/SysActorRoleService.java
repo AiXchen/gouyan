@@ -1,5 +1,6 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysActorRole;
 import com.gouyan.system.domin.SysMovieAge;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-19 22:53
  */
-public interface SysActorRoleService {
+public interface SysActorRoleService extends IService<SysActorRole> {
     List<SysActorRole> findAll();
 
     SysActorRole findById(Long id);

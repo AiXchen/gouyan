@@ -1,5 +1,6 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysActorRole;
 import com.gouyan.system.domin.SysMovieAge;
 
@@ -9,7 +10,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-19 22:52
  */
-public interface SysActorRoleMapper {
+public interface SysActorRoleMapper extends MPJBaseMapper<SysActorRole> {
 
     /**
      * 查询所有

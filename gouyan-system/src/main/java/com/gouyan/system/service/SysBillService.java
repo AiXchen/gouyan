@@ -1,5 +1,6 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysBill;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-30 14:24
  */
-public interface SysBillService {
+public interface SysBillService extends IService<SysBill> {
 
     List<SysBill> findAll(SysBill sysBill);
 

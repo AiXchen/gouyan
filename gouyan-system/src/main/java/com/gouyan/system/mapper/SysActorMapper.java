@@ -3,6 +3,7 @@ package com.gouyan.system.mapper;
 import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysActor;
 import com.gouyan.system.domin.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @author lxd
  * @create 2020-11-23 15:34
  */
+@Mapper
 public interface SysActorMapper extends MPJBaseMapper<SysActor>{
     List<SysActor> findAll(SysActor sysActor);
 

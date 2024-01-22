@@ -1,13 +1,14 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovieAge;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-14 22:52
+ * @author Aixchen
+ * @date 2024/1/22 15:12
  */
-public interface SysMovieAgeMapper {
+public interface SysMovieAgeMapper extends MPJBaseMapper<SysMovieAge> {
 
     /**
      * 查询所有

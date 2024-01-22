@@ -25,19 +25,21 @@ public class SysBillServiceImpl extends ServiceImpl<SysBillMapper,SysBill> imple
 
     @Override
     public List<SysBill> findAll(SysBill sysBill) {
-        MPJLambdaWrapper<SysBill> wrapper = new MPJLambdaWrapper<>();
-        wrapper.selectAll(SysBill.class);
-        addCondition(wrapper,sysBill);
-        return baseMapper.selectList(wrapper);
-//        return sysBillMapper.findAll(sysBill);
+//        MPJLambdaWrapper<SysBill> wrapper = new MPJLambdaWrapper<>();
+//        wrapper.selectAll(SysBill.class);
+//        addCondition(wrapper,sysBill);
+//        return baseMapper.selectList(wrapper);
+        return sysBillMapper.findAll(sysBill);
     }
 
     private void addCondition(MPJLambdaWrapper<SysBill> wrapper, SysBill sysBill) {
         if(Optional.ofNullable(sysBill.getUserId()).isPresent()){
             wrapper.eq(SysBill::getUserId,sysBill.getUserId());
         }
-        wrapper.eq(sysBill.getBillState(),SysBill::getBillState,sysBill.getBillState());
-        wrapper.ge(SysBill::getBillDate,sysBill.getBillDate());
+        wrapper.eq(sysBill.getBillState() != null && sysBill.getBillState()
+                ,SysBill::getBillState,sysBill.getBillState());
+        wrapper.ge(sysBill.getBillDate() != null
+                ,SysBill::getBillDate,sysBill.getBillDate());
     }
 
     @Override

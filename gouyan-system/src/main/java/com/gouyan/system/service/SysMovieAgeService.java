@@ -1,15 +1,16 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysMovieAge;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-14 22:57
+ * @author Aixchen
+ * @date 2024/1/22 15:12
  */
-public interface SysMovieAgeService {
+public interface SysMovieAgeService extends IService<SysMovieAge> {
 
     List<SysMovieAge> findAll();
 

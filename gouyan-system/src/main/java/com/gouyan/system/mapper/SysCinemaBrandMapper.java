@@ -1,10 +1,11 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysCinemaBrand;
 
 import java.util.List;
 
-public interface SysCinemaBrandMapper {
+public interface SysCinemaBrandMapper extends MPJBaseMapper<SysCinemaBrand> {
     
     List<SysCinemaBrand> findAll();
     

@@ -1,14 +1,15 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysHallCategory;
 
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-19 21:11
+ * @author Aixchen
+ * @date 2024/1/22 14:09
  */
-public interface SysHallCategoryService {
+public interface SysHallCategoryService extends IService<SysHallCategory> {
     /**
      * 查询所有影厅分类信息
      * @return

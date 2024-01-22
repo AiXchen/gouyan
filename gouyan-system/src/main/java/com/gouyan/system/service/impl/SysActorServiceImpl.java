@@ -38,6 +38,9 @@ public class SysActorServiceImpl extends ServiceImpl<SysActorMapper,SysActor> im
         if(Optional.ofNullable(sysActor.getActorGender()).isPresent()){
             wrapper.eq(SysActor::getActorGender,sysActor.getActorGender());
         }
+//        .select(SysActor::getActorId,SysActor::getActorAge,SysActor::getActorGender,SysActor::getActorHeight
+//                ,SysActor::getActorNation,SysActor::getActorConstellation,SysActor::getActorInformation,SysActor::getActorName
+//                ,SysActor::getActorPhoto,SysActor::getActorBloodType,SysActor::getActorNationality)
         return baseMapper.selectList(wrapper);
 //        return sysActorMapper.findAll(sysActor);
     }
@@ -50,9 +53,10 @@ public class SysActorServiceImpl extends ServiceImpl<SysActorMapper,SysActor> im
 
     @Override
     public int add(SysActor sysActor) {
-        SysActor actor = new SysActor();
-        BeanUtils.copyProperties(sysActor,actor);
-        return baseMapper.insert(actor);
+//        SysActor actor = new SysActor();
+//        BeanUtils.copyProperties(sysActor,actor);
+//        return baseMapper.insert(actor);
+        return baseMapper.insert(sysActor);
 //        return sysActorMapper.add(sysActor);
     }
 

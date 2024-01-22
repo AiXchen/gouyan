@@ -1,15 +1,16 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysSessionVo;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-23 22:29
+ * @author Aixchen
+ * @date 2024/1/22 17:29
  */
-public interface SysSessionMapper {
+public interface SysSessionMapper extends MPJBaseMapper<SysSession> {
 
     /**
      * 根据条件查询

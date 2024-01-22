@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 电影年代控制器
- * @Author: 华雨欣
- * @Create: 2020-11-15 22:58
+ * @author Aixchen
+ * @date 2024/1/22 15:12
  */
 @RestController
 public class SysMovieAgeController extends BaseController {

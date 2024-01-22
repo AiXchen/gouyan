@@ -1,48 +1,55 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.system.domin.SysMovieArea;
 import com.gouyan.system.mapper.SysMovieAreaMapper;
 import com.gouyan.system.service.SysMovieAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-18 22:29
+ * @author Aixchen
+ * @date 2024/1/22 15:16
  */
 @Service
-public class SysMovieAreaServiceImpl implements SysMovieAreaService {
+public class SysMovieAreaServiceImpl extends ServiceImpl<SysMovieAreaMapper,SysMovieArea> implements SysMovieAreaService {
     @Autowired
-    SysMovieAreaMapper sysMovieAreaMapper;
+    private SysMovieAreaMapper sysMovieAreaMapper;
 
     @Override
     public List<SysMovieArea> findAll() {
-        return sysMovieAreaMapper.findAll();
+        return baseMapper.selectList(null);
+//        return sysMovieAreaMapper.findAll();
     }
 
     @Override
     public SysMovieArea findById(Long id) {
-        return sysMovieAreaMapper.findById(id);
+        return baseMapper.selectById(id);
+//        return sysMovieAreaMapper.findById(id);
     }
 
     @Override
     public int add(SysMovieArea sysMovieArea) {
-        return sysMovieAreaMapper.add(sysMovieArea);
+        return baseMapper.insert(sysMovieArea);
+//        return sysMovieAreaMapper.add(sysMovieArea);
     }
 
     @Override
     public int update(SysMovieArea sysMovieArea) {
-        return sysMovieAreaMapper.update(sysMovieArea);
+        return baseMapper.updateById(sysMovieArea);
+//        return sysMovieAreaMapper.update(sysMovieArea);
     }
 
     @Override
     public int delete(Long[] ids) {
-        int rows = 0;
-        for (Long id : ids) {
-            rows += sysMovieAreaMapper.delete(id);
-        }
-        return rows;
+        return baseMapper.deleteBatchIds(Arrays.asList(ids));
+//        int rows = 0;
+//        for (Long id : ids) {
+//            rows += sysMovieAreaMapper.delete(id);
+//        }
+//        return rows;
     }
 }

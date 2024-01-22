@@ -1,14 +1,15 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysMovieComment;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-22 21:48
+ * @author Aixchen
+ * @date 2024/1/22 15:26
  */
-public interface SysMovieCommentService {
+public interface SysMovieCommentService extends IService<SysMovieComment> {
 
     List<SysMovieComment> findAll();
 

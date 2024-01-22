@@ -11,8 +11,8 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 /**
- * @author lxd
- * @create 2020-11-22 21:24
+ * @author Aixchen
+ * @date 2024/1/22 15:51
  */
 
 @AllArgsConstructor

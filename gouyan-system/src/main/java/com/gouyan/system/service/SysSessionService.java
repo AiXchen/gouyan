@@ -1,15 +1,15 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysSession;
 import com.gouyan.system.domin.vo.SysSessionVo;
 
 import java.util.List;
-
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-24 23:23
+ * @author Aixchen
+ * @date 2024/1/22 17:29
  */
-public interface SysSessionService {
+public interface SysSessionService extends IService<SysSession> {
 
     List<SysSession> findByVo(SysSessionVo sysSessionVo);
 

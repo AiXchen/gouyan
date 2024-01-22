@@ -1,15 +1,16 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovieAge;
 import com.gouyan.system.domin.SysMovieArea;
 
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-18 22:07
+ * @author Aixchen
+ * @date 2024/1/22 15:15
  */
-public interface SysMovieAreaMapper {
+public interface SysMovieAreaMapper extends MPJBaseMapper<SysMovieArea> {
     /**
      * 查询所有电影区域
      * @return

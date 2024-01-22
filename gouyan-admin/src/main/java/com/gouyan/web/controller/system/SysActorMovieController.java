@@ -10,8 +10,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @author lxd
- * @create 2020-11-27 10:36
+ * @author Aixchen
+ * @date 2024/1/22 14:07
  */
 @RestController
 public class SysActorMovieController extends BaseController {

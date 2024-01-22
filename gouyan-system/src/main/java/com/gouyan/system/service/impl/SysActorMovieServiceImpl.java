@@ -31,9 +31,10 @@ public class SysActorMovieServiceImpl extends ServiceImpl<SysActorMovieMapper,Sy
 
     @Override
     public int add(SysActorMovie sysActorMovie) {
-        SysActorMovie actorMovie = new SysActorMovie();
-        BeanUtils.copyProperties(sysActorMovie,actorMovie);
-        return baseMapper.insert(actorMovie);
+//        SysActorMovie actorMovie = new SysActorMovie();
+//        BeanUtils.copyProperties(sysActorMovie,actorMovie);
+//        return baseMapper.insert(actorMovie);
+        return baseMapper.insert(sysActorMovie);
 
 //        return sysActorMovieMapper.add(sysActorMovie);
     }

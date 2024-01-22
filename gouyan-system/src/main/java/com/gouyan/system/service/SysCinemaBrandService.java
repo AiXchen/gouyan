@@ -1,10 +1,11 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysCinemaBrand;
 
 import java.util.List;
 
-public interface SysCinemaBrandService {
+public interface SysCinemaBrandService extends IService<SysCinemaBrand> {
     List<SysCinemaBrand> findAll();
 
     SysCinemaBrand findById(Long id);

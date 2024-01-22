@@ -1,49 +1,56 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.system.domin.SysHallCategory;
 import com.gouyan.system.mapper.SysHallCategoryMapper;
 import com.gouyan.system.service.SysHallCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-19 21:12
+ * @author Aixchen
+ * @date 2024/1/22 14:09
  */
 @Service
-public class SysHallCategoryServiceImpl implements SysHallCategoryService {
+public class SysHallCategoryServiceImpl extends ServiceImpl<SysHallCategoryMapper,SysHallCategory> implements SysHallCategoryService {
 
     @Autowired
     private SysHallCategoryMapper sysHallCategoryMapper;
 
     @Override
     public List<SysHallCategory> findAll() {
-        return sysHallCategoryMapper.findAll();
+        return baseMapper.selectList(null);
+//        return sysHallCategoryMapper.findAll();
     }
 
     @Override
     public SysHallCategory findById(Long id) {
-        return sysHallCategoryMapper.findById(id);
+        return baseMapper.selectById(id);
+//        return sysHallCategoryMapper.findById(id);
     }
 
     @Override
     public int add(SysHallCategory sysHallCategory) {
-        return sysHallCategoryMapper.add(sysHallCategory);
+        return baseMapper.insert(sysHallCategory);
+//        return sysHallCategoryMapper.add(sysHallCategory);
     }
 
     @Override
     public int update(SysHallCategory sysHallCategory) {
-        return sysHallCategoryMapper.update(sysHallCategory);
+        return baseMapper.updateById(sysHallCategory);
+//        return sysHallCategoryMapper.update(sysHallCategory);
     }
 
     @Override
     public int delete(Long[] ids) {
-        int rows = 0;
-        for (Long id : ids) {
-            rows += sysHallCategoryMapper.delete(id);
-        }
-        return rows;
+        return baseMapper.deleteBatchIds(Arrays.asList(ids));
+//        int rows = 0;
+//        for (Long id : ids) {
+//            rows += sysHallCategoryMapper.delete(id);
+//        }
+//        return rows;
     }
 }

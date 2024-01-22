@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-19 18:45
+ * @author Aixchen
+ * @date 2024/1/22 15:19
  */
 @RestController
 public class SysMovieCategoryController extends BaseController {

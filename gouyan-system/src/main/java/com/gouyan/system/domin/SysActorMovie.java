@@ -1,5 +1,6 @@
 package com.gouyan.system.domin;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,9 +20,12 @@ import java.io.Serializable;
 public class SysActorMovie implements Serializable {
     private static final Long SerialVersionUID = 1L;
 
+    @TableField("movie_id")
     private Long movieId;
 
+    @TableField("actor_id")
     private Long actorId;
 
+    @TableField("actor_role_id")
     private Long actorRoleId;
 }

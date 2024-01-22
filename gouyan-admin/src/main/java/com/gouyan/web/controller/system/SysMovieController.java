@@ -16,8 +16,8 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-22 16:00
+ * @author Aixchen
+ * @date 2024/1/22 14:49
  */
 @RestController
 public class SysMovieController extends BaseController {

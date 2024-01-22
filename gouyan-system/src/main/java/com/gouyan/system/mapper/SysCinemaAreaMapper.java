@@ -1,5 +1,6 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysCinemaArea;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * @Author: 华雨欣
  * @Create: 2020-11-20 09:08
  */
-public interface SysCinemaAreaMapper {
+public interface SysCinemaAreaMapper extends MPJBaseMapper<SysCinemaArea> {
 
     /**
      * 查询所有

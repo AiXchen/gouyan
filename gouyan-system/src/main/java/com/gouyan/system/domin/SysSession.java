@@ -1,5 +1,8 @@
 package com.gouyan.system.domin;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +17,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * 场次实体类
- * @Author: 华雨欣
- * @Create: 2020-11-23 21:59
+ * @author Aixchen
+ * @date 2024/1/22 17:31
  */
 @Data
 @AllArgsConstructor
@@ -27,58 +29,74 @@ public class SysSession implements Serializable {
     private static final Long serialVersionUID = 1L;
 
     //场次id
+    @TableId(value = "session_id",type = IdType.AUTO)
     private Long sessionId;
 
     //影院id
     @NotNull(message = "场次所属影院不能为空")
+    @TableField("cinema_id")
     private Long cinemaId;
 
     //影厅id
     @NotNull(message = "场次所在影厅不能为空")
+    @TableField("hall_id")
     private Long hallId;
 
     //该场次语言版本
     @NotBlank(message = "场次电影语言版本不能为空")
+    @TableField("language_version")
     private String languageVersion;
 
     //电影id
     @NotNull(message = "场次安排电影不能为空")
+    @TableField("movie_id")
     private Long movieId;
 
     //电影播放时段id
     @NotNull(message = "场次播放时段不能为空")
+    @TableField("movie_runtime_id")
     private Long movieRuntimeId;
 
     //场次日期
     @NotNull(message = "场次日期不能为空")
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd")
+    @TableField("session_date")
     private LocalDate sessionDate;
 
     //场次状态, true表示上映中, false表示已下架
     @NotNull(message = "场次状态不能为空")
+    @TableField("session_state")
     private Boolean sessionState;
 
     //场次票价
     @NotNull(message = "场次票价不能为空")
     @Size(min = 0, message = "场次票价不能为负数")
+    @TableField("session_price")
     private Double sessionPrice;
 
     //场次提示
+    @TableField("session_tips")
     private String sessionTips;
 
     //场次座位信息
     @NotBlank(message = "场次座位信息不能为空")
+    @TableField("session_seats")
     private String sessionSeats;
 
+    @TableField("seat_nums")
     private Integer seatNums;
 
 
     //多表连接
+    @TableField(exist = false)
     private SysCinema sysCinema;
 
+    @TableField(exist = false)
     private SysHall sysHall;
 
+    @TableField(exist = false)
     private SysMovie sysMovie;
 
+    @TableField(exist = false)
     private SysMovieRuntime sysMovieRuntime;
 }

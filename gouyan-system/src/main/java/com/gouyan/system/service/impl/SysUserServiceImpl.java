@@ -1,5 +1,6 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gouyan.common.utils.JwtUtil;
 import com.gouyan.common.utils.SaltUtils;
 import com.gouyan.system.domin.LoginUser;
@@ -12,13 +13,13 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.naming.ServiceUnavailableException;
 import java.util.List;
-
 /**
- * @author lxd
- * @create 2020-11-22 21:45
+ * @author Aixchen
+ * @date 2024/1/22 15:48
  */
-@Service("sysUserService")
+@Service
 public class SysUserServiceImpl implements SysUserService {
 
     @Autowired

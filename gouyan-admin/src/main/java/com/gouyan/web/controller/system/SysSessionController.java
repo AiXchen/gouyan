@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-25 09:32
+ * @author Aixchen
+ * @date 2024/1/22 17:29
  */
 @RestController
 public class SysSessionController extends BaseController {

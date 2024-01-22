@@ -1,15 +1,16 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovieArea;
 import com.gouyan.system.domin.SysMovieCategory;
 
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-19 18:43
+ * @author Aixchen
+ * @date 2024/1/22 15:19
  */
-public interface SysMovieCategoryMapper {
+public interface SysMovieCategoryMapper extends MPJBaseMapper<SysMovieCategory> {
 
     /**
      * 查询所有电影分类

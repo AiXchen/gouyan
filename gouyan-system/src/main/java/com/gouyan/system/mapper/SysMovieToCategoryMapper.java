@@ -1,14 +1,15 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovieToCategory;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 22:13
+ * @author Aixchen
+ * @date 2024/1/22 17:24
  */
-public interface SysMovieToCategoryMapper {
+public interface SysMovieToCategoryMapper extends MPJBaseMapper<SysMovieToCategory> {
 
     List<SysMovieToCategory> findAll(SysMovieToCategory sysMovieToCategory);
 

@@ -10,8 +10,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 22:56
+ * @author Aixchen
+ * @date 2024/1/22 17:24
  */
 @RestController
 public class SysMovieToCategoryController extends BaseController {

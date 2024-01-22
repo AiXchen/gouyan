@@ -1,15 +1,17 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
+import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.gouyan.system.domin.SysMovieRuntime;
 import com.gouyan.system.domin.SysUserHobby;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-20 11:21
+ * @author Aixchen
+ * @date 2024/1/22 17:13
  */
-public interface SysMovieRuntimeMapper {
+public interface SysMovieRuntimeMapper extends MPJBaseMapper<SysMovieRuntime> {
 
     /**
      * 查询所有

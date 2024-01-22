@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * 演员角色控制器
- * @Author: 华雨欣
- * @Create: 2020-11-19 23:07
+ * @author Aixchen
+ * @date 2024/1/22 14:07
  */
 @RestController
 public class SysActorRoleController extends BaseController {

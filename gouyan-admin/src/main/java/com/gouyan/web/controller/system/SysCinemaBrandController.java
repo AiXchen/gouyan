@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+/**
+ * @author Aixchen
+ * @date 2024/1/22 14:08
+ */
 @RestController
 public class SysCinemaBrandController extends BaseController {
     @Autowired

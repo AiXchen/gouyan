@@ -1,15 +1,16 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysMovieComment;
 
 import java.util.Date;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:52
+ * @author Aixchen
+ * @date 2024/1/22 15:26
  */
-public interface SysMovieCommentMapper {
+public interface SysMovieCommentMapper extends MPJBaseMapper<SysMovieComment> {
 
     /**
      * 查询所有

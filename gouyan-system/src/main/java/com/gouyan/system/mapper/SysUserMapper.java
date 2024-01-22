@@ -1,16 +1,18 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.LoginUser;
 import com.gouyan.system.domin.SysUser;
 import com.gouyan.system.domin.vo.SysUserVo;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-22 21:48
+ * @author Aixchen
+ * @date 2024/1/22 15:49
  */
-public interface SysUserMapper {
+public interface SysUserMapper{
     List<SysUser> findAll(SysUser sysUser);
 
     SysUser findById(Long id);

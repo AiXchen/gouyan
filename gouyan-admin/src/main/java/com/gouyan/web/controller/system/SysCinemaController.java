@@ -17,8 +17,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-25 22:41
+ * @author Aixchen
+ * @date 2024/1/22 14:08
  */
 @RestController
 public class SysCinemaController extends BaseController {

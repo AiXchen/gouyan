@@ -1,15 +1,16 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.SysMovieToCategory;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 22:19
+ * @author Aixchen
+ * @date 2024/1/22 17:24
  */
-public interface SysMovieToCategoryService {
+public interface SysMovieToCategoryService extends IService<SysMovieToCategory> {
 
     List<SysMovieToCategory> findAll(SysMovieToCategory sysMovieToCategory);
 

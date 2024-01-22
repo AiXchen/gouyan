@@ -9,9 +9,6 @@ import com.gouyan.system.domin.vo.SysBillVo;
 import com.gouyan.system.service.SysBillService;
 import com.gouyan.system.service.SysMovieService;
 import com.gouyan.system.service.SysSessionService;
-import com.gouyan.system.service.impl.SysBillServiceImpl;
-import com.gouyan.system.service.impl.SysMovieServiceImpl;
-import com.gouyan.system.service.impl.SysSessionServiceImpl;
 import com.gouyan.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -20,8 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 14:27
+ * @author Aixchen
+ * @date 2024/1/22 14:07
  */
 @RestController
 public class SysBillController extends BaseController {

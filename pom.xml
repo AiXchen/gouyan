@@ -42,6 +42,7 @@
 		<fastjson.version>1.2.74</fastjson.version>
 		<mybatis-join.version>1.4.5</mybatis-join.version>
 		<mybatis-plus.version>3.5.3.1</mybatis-plus.version>
+		<p6spy.version>3.9.1</p6spy.version>
 	</properties>
 
 	<!-- 只统一管理版本，实际依赖在各个模块自身中实现 -->

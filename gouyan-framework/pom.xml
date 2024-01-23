@@ -38,6 +38,12 @@
 			<artifactId>druid-spring-boot-starter</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>p6spy</groupId>
+			<artifactId>p6spy</artifactId>
+			<version>${p6spy.version}</version>
+		</dependency>
+
 		<!-- Mybatis -->
 <!--		<dependency>-->
 <!--			<groupId>org.mybatis.spring.boot</groupId>-->

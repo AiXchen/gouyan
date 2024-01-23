@@ -5,14 +5,15 @@ import com.gouyan.system.domin.LoginUser;
 import com.gouyan.system.domin.SysMovie;
 import com.gouyan.system.domin.SysUser;
 import com.gouyan.system.domin.vo.SysUserVo;
+import com.gouyan.system.mapper.SysUserMapper;
 
 import java.util.List;
 
 /**
  * @author Aixchen
- * @date 2024/1/22 15:48
+ * @date 2024/1/23 11:10
  */
-public interface SysUserService{
+public interface SysUserService extends IService<SysUser>{
     List<SysUser> findAll(SysUser sysUser);
 
     SysUser findById(Long id);

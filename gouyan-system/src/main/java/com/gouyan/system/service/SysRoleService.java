@@ -1,14 +1,15 @@
 package com.gouyan.system.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysRole;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:53
+ * @author Aixchen
+ * @date 2024/1/23 10:41
  */
-public interface SysRoleService {
+public interface SysRoleService extends IService<SysRole> {
     List<SysRole> findAll();
 
     SysRole findById(Long id);

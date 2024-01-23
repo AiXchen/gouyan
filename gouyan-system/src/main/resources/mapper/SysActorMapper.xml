@@ -128,8 +128,13 @@
     <!-- 查询某部电影的所有主演 -->
     <select id="findaMajorActorNames" parameterType="long" resultType="String">
         select actor_name from sys_actor sa
-        join sys_actor_movie sam on sa.actor_id = sam.actor_id and sam.actor_role_id = 2
+        join sys_actor_movie sam on sa.actor_id = sam.actor_id
         where sam.movie_id = #{id}
     </select>
+<!--    <select id="findaMajorActorNames" parameterType="long" resultType="String">-->
+<!--        select actor_name from sys_actor sa-->
+<!--                                   join sys_actor_movie sam on sa.actor_id = sam.actor_id and sam.actor_role_id = 2-->
+<!--        where sam.movie_id = #{id}-->
+<!--    </select>-->
 
 </mapper>

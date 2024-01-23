@@ -10,9 +10,9 @@ import java.util.List;
 
 /**
  * @author Aixchen
- * @date 2024/1/22 15:49
+ * @date 2024/1/23 11:10
  */
-public interface SysUserMapper{
+public interface SysUserMapper extends MPJBaseMapper<SysUser>{
     List<SysUser> findAll(SysUser sysUser);
 
     SysUser findById(Long id);

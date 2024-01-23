@@ -26,7 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class CustomerRealm extends AuthorizingRealm {
 
     @Autowired
-    private SysUserServiceImpl sysUserService;
+    private SysUserService sysUserService;
 
     /**
      * 重写此方法避免shiro报错

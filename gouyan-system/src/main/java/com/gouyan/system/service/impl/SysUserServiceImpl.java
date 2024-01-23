@@ -1,11 +1,16 @@
 package com.gouyan.system.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.gouyan.common.utils.JwtUtil;
 import com.gouyan.common.utils.SaltUtils;
+import com.gouyan.common.utils.StringUtil;
 import com.gouyan.system.domin.LoginUser;
+import com.gouyan.system.domin.SysRole;
 import com.gouyan.system.domin.SysUser;
 import com.gouyan.system.domin.vo.SysUserVo;
+import com.gouyan.system.mapper.SysRoleMapper;
 import com.gouyan.system.mapper.SysUserMapper;
 import com.gouyan.system.service.SysUserService;
 import org.apache.shiro.authc.AuthenticationException;
@@ -14,30 +19,73 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.naming.ServiceUnavailableException;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 /**
  * @author Aixchen
- * @date 2024/1/22 15:48
+ * @date 2024/1/23 11:10
  */
 @Service
-public class SysUserServiceImpl implements SysUserService {
+public class SysUserServiceImpl extends ServiceImpl<SysUserMapper,SysUser> implements SysUserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
 
     @Override
     public List<SysUser> findAll(SysUser sysUser) {
-        return sysUserMapper.findAll(sysUser);
+        MPJLambdaWrapper<SysUser> wrapper = new MPJLambdaWrapper<>();
+        addCondition(wrapper,sysUser);
+        List<SysUser> userList = baseMapper.selectList(wrapper);
+        for(SysUser u : userList){
+            findRole(u);
+        }
+        return userList;
+//        wrapper.selectAll(SysUser.class)
+//                .leftJoin(SysRole.class,SysRole::getRoleId,SysUser::getRoleId)
+//                .selectAssociation(SysRole.class, SysUser::getSysRole);
+//        addCondition(wrapper,sysUser);
+//        return baseMapper.selectList(wrapper);
+
+
+//        return sysUserMapper.findAll(sysUser);
+    }
+
+    private void findRole(SysUser u) {
+        MPJLambdaWrapper<SysRole> wrapper = new MPJLambdaWrapper<>();
+        wrapper.selectAll(SysRole.class)
+                        .eq(SysRole::getRoleId, u.getRoleId() );
+        SysRole role = sysRoleMapper.selectOne(wrapper);
+        u.setSysRole(role);
+    }
+
+    private void addCondition(MPJLambdaWrapper<SysUser> wrapper, SysUser sysUser) {
+        wrapper.like(StringUtil.isNotEmpty(sysUser.getUserName()),
+                SysUser::getUserName,sysUser.getUserName());
+        wrapper.like(StringUtil.isNotEmpty(sysUser.getEmail()),
+                SysUser::getEmail,sysUser.getEmail());
+        wrapper.like(StringUtil.isNotEmpty(sysUser.getPhoneNumber()),
+                SysUser::getPhoneNumber,sysUser.getPhoneNumber());
+        wrapper.eq(sysUser.getSex() != null,
+                SysUser::getSex, sysUser.getSex());
     }
 
     @Override
     public SysUser findById(Long id) {
-        return sysUserMapper.findById(id);
+        SysUser user = baseMapper.selectOne(new MPJLambdaWrapper<SysUser>().eq(SysUser::getUserId, id));
+        findRole(user);
+        return user;
+//        return sysUserMapper.findById(id);
     }
 
     @Override
     public SysUser findByName(String userName) {
-        return sysUserMapper.findByName(userName);
+        SysUser user = baseMapper.selectOne(new MPJLambdaWrapper<SysUser>().eq(SysUser::getUserName, userName));
+        findRole(user);
+        return user;
+//        return sysUserMapper.findByName(userName);
     }
 
     /**
@@ -56,7 +104,8 @@ public class SysUserServiceImpl implements SysUserService {
 
         sysUser.setPassword(md5Hash.toHex());
         sysUser.setSalt(salt);
-        return sysUserMapper.add(sysUser);
+        return baseMapper.insert(sysUser);
+//        return sysUserMapper.add(sysUser);
     }
 
     @Override
@@ -78,22 +127,26 @@ public class SysUserServiceImpl implements SysUserService {
             sysUser.setPassword(md5Hash.toHex());
             sysUser.setSalt(salt);
         }
-        return sysUserMapper.update(sysUser);
+        return baseMapper.updateById(sysUser);
+//        return sysUserMapper.update(sysUser);
     }
 
     @Override
     public int delete(Long[] ids) {
-        int rows = 0;
-        for (Long id : ids) {
-            rows += sysUserMapper.delete(id);
-        }
-        return rows;
+//        int rows = 0;
+//        for (Long id : ids) {
+//            rows += sysUserMapper.delete(id);
+//        }
+//        return rows;
+        return baseMapper.deleteBatchIds(Arrays.asList(ids));
     }
 
     @Override
     public LoginUser login(SysUserVo sysUserVo) {
         //登录，先查询用户信息
-        SysUser user = sysUserMapper.findByName(sysUserVo.getUserName());
+//        SysUser user = sysUserMapper.findByName(sysUserVo.getUserName());
+        SysUser user = baseMapper.selectOne(new MPJLambdaWrapper<SysUser>()
+                .eq(SysUser::getUserName, sysUserVo.getUserName()));
         if(user == null){
             throw new AuthenticationException("用户名不存在");
         }

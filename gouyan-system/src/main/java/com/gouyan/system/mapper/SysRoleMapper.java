@@ -1,14 +1,15 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysRole;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:52
+ * @author Aixchen
+ * @date 2024/1/23 10:41
  */
-public interface SysRoleMapper {
+public interface SysRoleMapper extends MPJBaseMapper<SysRole> {
 
     List<SysRole> findAll();
 

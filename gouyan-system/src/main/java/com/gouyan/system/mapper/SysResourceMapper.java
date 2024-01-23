@@ -1,14 +1,15 @@
 package com.gouyan.system.mapper;
 
+import com.github.yulichang.base.MPJBaseMapper;
 import com.gouyan.system.domin.SysResource;
 
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:52
+ * @author Aixchen
+ * @date 2024/1/23 9:10
  */
-public interface SysResourceMapper {
+public interface SysResourceMapper extends MPJBaseMapper<SysResource> {
 
     /**
      * 查询所有并包含其父菜单

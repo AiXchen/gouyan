@@ -4,19 +4,16 @@ import ch.qos.logback.core.util.StringCollectionUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.gouyan.common.utils.StringUtil;
-import com.gouyan.system.domin.SysMovie;
-import com.gouyan.system.domin.SysMovieCategory;
-import com.gouyan.system.domin.SysMovieToCategory;
+import com.gouyan.system.domin.*;
 import com.gouyan.system.domin.vo.SysMovieVo;
-import com.gouyan.system.mapper.SysMovieMapper;
+import com.gouyan.system.mapper.*;
 import com.gouyan.system.service.SysMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
-import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.*;
 
 /**
  * @author Aixchen
@@ -27,6 +24,14 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
 
     @Autowired
     private SysMovieMapper sysMovieMapper;
+    @Autowired
+    private SysMovieAreaMapper sysMovieAreaMapper;
+    @Autowired
+    private SysMovieAgeMapper sysMovieAgeMapper;
+    @Autowired
+    private SysMovieCategoryMapper sysMovieCategoryMapper;
+    @Autowired
+    private SysActorMapper sysActorMapper;
 
     @Override
     public List<SysMovie> findAll(SysMovieVo sysMovieVo) {
@@ -42,13 +47,13 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
             wrapper.leftJoin(SysMovieToCategory.class,SysMovieToCategory::getMovieId,SysMovie::getMovieId)
                     .leftJoin(SysMovieCategory.class,SysMovieCategory::getMovieCategoryId,SysMovieToCategory::getMovieCategoryId);
         }
-        if(Optional.ofNullable(sysMovieVo.getMovieAgeId()).isPresent()){
+        if(Optional.ofNullable(sysMovieVo.getMovieAgeId()).isPresent() && sysMovieVo.getMovieAgeId() > 0){
             wrapper.eq(SysMovie::getMovieAgeId, sysMovieVo.getMovieAgeId());
         }
-        if(Optional.ofNullable(sysMovieVo.getMovieAreaId()).isPresent()){
+        if(Optional.ofNullable(sysMovieVo.getMovieAreaId()).isPresent() && sysMovieVo.getMovieAreaId() > 0){
             wrapper.eq(SysMovie::getMovieAreaId, sysMovieVo.getMovieAreaId());
         }
-        if(Optional.ofNullable(sysMovieVo.getMovieCategoryId()).isPresent()){
+        if(Optional.ofNullable(sysMovieVo.getMovieCategoryId()).isPresent() && sysMovieVo.getMovieCategoryId() > 0){
             wrapper.eq(SysMovieCategory::getMovieCategoryId, sysMovieVo.getMovieCategoryId());
         }
         wrapper.like(StringUtil.isNotEmpty(sysMovieVo.getMovieNameCn()),
@@ -112,7 +117,43 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
      */
     @Override
     public List<SysMovie> hotMovieList() {
+//        Date date = new Date();
+//        // 创建Calendar对象并设置为当前日期
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(date);
+//        // 减去一天
+//        cal.add(Calendar.DAY_OF_MONTH, -1);
+//        // 获取减去一天后的日期
+//        Date previousDate = cal.getTime();
+//
+//        MPJLambdaWrapper<SysMovie> wrapper = new MPJLambdaWrapper<>();
+//        wrapper.selectAll(SysMovie.class)
+//                .leftJoin(SysSession.class,SysSession::getMovieId,SysMovie::getMovieId)
+//                .eq(SysSession::getSessionDate, previousDate );
+//        List<SysMovie> movieList = baseMapper.selectList(wrapper);
+//        for(SysMovie m : movieList){
+//            setValue(m);
+//        }
+//        return movieList;
         return sysMovieMapper.hotMovieList();
+    }
+
+    private void setValue(SysMovie m) {
+        m.setSysMovieArea(sysMovieAreaMapper.selectById(m.getMovieAreaId()));
+        m.setSysMovieAge(sysMovieAgeMapper.selectById(m.getMovieAgeId()));
+
+        MPJLambdaWrapper<SysMovieCategory> categoryWrapper = new MPJLambdaWrapper<>();
+        categoryWrapper.selectAll(SysMovieCategory.class)
+                .leftJoin(SysMovieToCategory.class,SysMovieToCategory::getMovieCategoryId,SysMovieCategory::getMovieCategoryId)
+                .eq(SysMovieToCategory::getMovieId, m.getMovieId() );
+        m.setMovieCategoryList(sysMovieCategoryMapper.selectList(categoryWrapper));
+
+        MPJLambdaWrapper<SysActor> actorWrapper = new MPJLambdaWrapper<>();
+        actorWrapper.select(SysActor::getActorName)
+                .leftJoin(SysActorMovie.class,SysActorMovie::getActorId,SysActor::getActorId)
+//                .eq(SysActorMovie::getActorId, 2 )
+                .eq(SysActorMovie::getMovieId, m.getMovieId() );
+        m.setMajorActorNameList(sysActorMapper.selectJoinList(String.class, actorWrapper));
     }
 
     /**
@@ -121,7 +162,17 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
      */
     @Override
     public List<SysMovie> domesticBoxOfficeList() {
-        return sysMovieMapper.domesticBoxOfficeList();
+        MPJLambdaWrapper<SysMovie> wrapper = new MPJLambdaWrapper<>();
+        wrapper.selectAll(SysMovie.class)
+                .in(SysMovie::getMovieAreaId, Arrays.asList(1,5,6))
+                .le(SysMovie::getReleaseDate, new Date() )
+                .orderByDesc(SysMovie::getMovieBoxOffice);
+        List<SysMovie> movieList = baseMapper.selectList(wrapper);
+        for(SysMovie s : movieList){
+            setValue(s);
+        }
+        return movieList;
+//        return sysMovieMapper.domesticBoxOfficeList();
     }
 
     /**
@@ -130,7 +181,17 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
      */
     @Override
     public List<SysMovie> europeanAndAmericanBoxOfficeList() {
-        return sysMovieMapper.europeanAndAmericanBoxOfficeList();
+        MPJLambdaWrapper<SysMovie> wrapper = new MPJLambdaWrapper<>();
+        wrapper.selectAll(SysMovie.class)
+                .in(SysMovie::getMovieAreaId, Arrays.asList(2, 9, 10, 11, 12, 13, 14))
+                .le(SysMovie::getReleaseDate, new Date() )
+                .orderByDesc(SysMovie::getMovieBoxOffice);
+        List<SysMovie> movieList = baseMapper.selectList(wrapper);
+        for(SysMovie s : movieList){
+            setValue(s);
+        }
+        return movieList;
+//        return sysMovieMapper.europeanAndAmericanBoxOfficeList();
     }
 
     /**
@@ -139,6 +200,15 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
      */
     @Override
     public List<SysMovie> top100List() {
-        return sysMovieMapper.top100List();
+        MPJLambdaWrapper<SysMovie> wrapper = new MPJLambdaWrapper<>();
+        wrapper.selectAll(SysMovie.class)
+                .le(SysMovie::getReleaseDate, new Date() )
+                .orderByDesc(SysMovie::getMovieScore,SysMovie::getMovieRateNum);
+        List<SysMovie> movieList = baseMapper.selectList(wrapper);
+        for(SysMovie s : movieList){
+            setValue(s);
+        }
+        return movieList;
+//        return sysMovieMapper.top100List();
     }
 }

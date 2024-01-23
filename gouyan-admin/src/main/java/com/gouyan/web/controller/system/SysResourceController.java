@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author Aixchen
+ * @date 2024/1/23 9:10
+ */
+
 @RestController
 public class SysResourceController extends BaseController {
 

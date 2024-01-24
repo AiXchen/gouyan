@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author lxd
- * @create 2020-11-27 10:28
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 @Service
 public class SysActorMovieServiceImpl extends ServiceImpl<SysActorMovieMapper,SysActorMovie> implements SysActorMovieService {

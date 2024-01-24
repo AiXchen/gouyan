@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-12-03 16:59
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 @Service
 public class SysCinemaBrandServiceImpl extends ServiceImpl<SysCinemaBrandMapper,SysCinemaBrand> implements SysCinemaBrandService {

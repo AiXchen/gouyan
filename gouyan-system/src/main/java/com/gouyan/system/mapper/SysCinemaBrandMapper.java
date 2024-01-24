@@ -5,6 +5,10 @@ import com.gouyan.system.domin.SysCinemaBrand;
 
 import java.util.List;
 
+/**
+ * @author Aixchen
+ * @date 2024/1/24 17:39
+ */
 public interface SysCinemaBrandMapper extends MPJBaseMapper<SysCinemaBrand> {
     
     List<SysCinemaBrand> findAll();

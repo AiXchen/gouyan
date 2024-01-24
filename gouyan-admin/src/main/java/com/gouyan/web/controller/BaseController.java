@@ -10,9 +10,8 @@ import static com.gouyan.common.page.PageBuilder.*;
 import java.util.List;
 
 /**
- * 抽取重复功能为基类
- * @Author: 华雨欣
- * @Create: 2020-11-19 17:37
+ * @author Aixchen
+ * @date 2024/1/24 17:40
  */
 public class BaseController {
 

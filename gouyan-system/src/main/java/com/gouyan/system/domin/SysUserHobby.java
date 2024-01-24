@@ -9,9 +9,8 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * 个人爱好
- * @Author: 华雨欣
- * @Create: 2020-11-20 10:32
+ * @author Aixchen
+ * @date 2024/1/24 17:42
  */
 @Data
 @AllArgsConstructor

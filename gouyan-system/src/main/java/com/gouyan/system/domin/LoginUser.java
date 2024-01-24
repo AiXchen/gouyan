@@ -8,9 +8,8 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * 当前登录用户
- * @Author: 华雨欣
- * @Create: 2020-12-07 22:56
+ * @author Aixchen
+ * @date 2024/1/24 17:41
  */
 @Data
 @NoArgsConstructor

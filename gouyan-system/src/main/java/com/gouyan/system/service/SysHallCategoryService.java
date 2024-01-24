@@ -40,4 +40,11 @@ public interface SysHallCategoryService extends IService<SysHallCategory> {
      * @param ids
      */
     int delete(Long[] ids);
+
+    /**
+     * 根据影院id查询影院包含的特殊厅
+     * @param id
+     * @return
+     */
+    List<SysHallCategory> findByCinemaId(Long id);
 }

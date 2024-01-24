@@ -8,9 +8,8 @@ import lombok.ToString;
 import java.util.Date;
 
 /**
- * 封装电影查询的条件
- * @Author: 华雨欣
- * @Create: 2020-12-01 10:58
+ * @author Aixchen
+ * @date 2024/1/24 17:41
  */
 @Data
 @AllArgsConstructor

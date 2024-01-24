@@ -16,12 +16,10 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 /**
- * @author lxd
- * @create 2020-11-23 15:36
+ * @author Aixchen
+ * @date 2024/1/24 17:38
  */
-
 @Service
 public class SysActorServiceImpl extends ServiceImpl<SysActorMapper,SysActor> implements SysActorService {
 
@@ -89,5 +87,15 @@ public class SysActorServiceImpl extends ServiceImpl<SysActorMapper,SysActor> im
 //                .orderByDesc(SysMovie::getReleaseDate);
 //        return baseMapper.selectOne(wrapper);
         return sysActorMapper.findActorById(id);
+    }
+
+    @Override
+    public List<String> findMajorActorNames(Long id) {
+        MPJLambdaWrapper<SysActor> actorWrapper = new MPJLambdaWrapper<>();
+        actorWrapper.select(SysActor::getActorName)
+                .leftJoin(SysActorMovie.class,SysActorMovie::getActorId,SysActor::getActorId)
+//                .eq(SysActorMovie::getActorId, 2 )
+                .eq(SysActorMovie::getMovieId, id);
+        return baseMapper.selectJoinList(String.class, actorWrapper);
     }
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -47,6 +48,9 @@ public class SysBillController extends BaseController {
     @PostMapping("/sysBill")
     public ResponseResult add(@Validated @RequestBody SysBill sysBill){
         System.out.println(sysBill);
+//        if(sysBill.getBillDate() == null){
+//            sysBill.setBillDate(new Date());
+//        }
         Object obj = sysBillService.add(sysBill);
         if(obj instanceof Integer){
             return getResult((Integer) obj);

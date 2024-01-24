@@ -14,9 +14,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 订单实体类
- * @Author: 华雨欣
- * @Create: 2020-11-30 13:53
+ * @author Aixchen
+ * @date 2024/1/24 15:08
  */
 @Data
 @NoArgsConstructor
@@ -26,7 +25,7 @@ public class SysBill implements Serializable {
 
     private static final Long serialVersionUID = 1L;
 
-    @TableId(value = "bill_id",type = IdType.ASSIGN_ID)
+    @TableId(value = "bill_id",type = IdType.AUTO)
     private Long billId;
 
     //订单状态，0表示未支付，1表示已完成

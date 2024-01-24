@@ -6,8 +6,8 @@ import com.gouyan.system.domin.SysActor;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-23 15:36
+ * @author Aixchen
+ * @date 2024/1/24 17:38
  */
 public interface SysActorService extends IService<SysActor> {
     List<SysActor> findAll(SysActor sysActor);
@@ -21,4 +21,11 @@ public interface SysActorService extends IService<SysActor> {
     int delete(Long[] ids);
 
     SysActor findActorById(Long id);
+
+    /**
+     * 根据电影id查询所有主演名称
+     * @param id
+     * @return
+     */
+    List<String> findMajorActorNames(Long id);
 }

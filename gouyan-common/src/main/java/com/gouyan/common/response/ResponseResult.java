@@ -4,9 +4,8 @@ import com.gouyan.common.constant.HttpStatus;
 import java.util.HashMap;
 
 /**
- * 响应消息结果，使用Map存储
- * @Author: 华雨欣
- * @Create: 2020-11-17 23:03
+ * @author Aixchen
+ * @date 2024/1/24 17:43
  */
 public class ResponseResult extends HashMap<String, Object> {
 

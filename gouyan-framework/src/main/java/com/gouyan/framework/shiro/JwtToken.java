@@ -3,9 +3,8 @@ package com.gouyan.framework.shiro;
 import org.apache.shiro.authc.AuthenticationToken;
 
 /**
- * 实现shiro的AuthenticationToken接口的类JwtToken
- * @Author: 华雨欣
- * @Create: 2020-12-09 10:35
+ * @author Aixchen
+ * @date 2024/1/24 17:42
  */
 public class JwtToken implements AuthenticationToken {
 

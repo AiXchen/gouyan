@@ -1,10 +1,7 @@
 package com.gouyan.system.domin;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +20,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Data
 @ToString
+@Builder
 public class SysHall implements Serializable {
     private final static Long serialVersionUID = 1L;
 

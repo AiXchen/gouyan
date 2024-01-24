@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 14:01
+ * @author Aixchen
+ * @date 2024/1/24 15:02
  */
 @Mapper
 public interface SysBillMapper extends MPJBaseMapper<SysBill> {

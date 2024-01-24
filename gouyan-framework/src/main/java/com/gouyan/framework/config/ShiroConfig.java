@@ -16,9 +16,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 配置shiro安全框架
- * @Author: 华雨欣
- * @Create: 2020-12-07 18:58
+ * @author Aixchen
+ * @date 2024/1/24 14:39
  */
 @Configuration
 public class ShiroConfig {

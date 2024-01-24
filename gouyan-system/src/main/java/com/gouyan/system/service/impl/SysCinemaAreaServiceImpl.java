@@ -12,8 +12,8 @@ import java.util.Base64;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-20 09:19
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 @Service
 public class SysCinemaAreaServiceImpl extends ServiceImpl<SysCinemaAreaMapper,SysCinemaArea> implements SysCinemaAreaService {

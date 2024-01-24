@@ -7,6 +7,8 @@ import com.gouyan.common.utils.StringUtil;
 import com.gouyan.system.domin.*;
 import com.gouyan.system.domin.vo.SysMovieVo;
 import com.gouyan.system.mapper.*;
+import com.gouyan.system.service.SysActorService;
+import com.gouyan.system.service.SysMovieCategoryService;
 import com.gouyan.system.service.SysMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +31,13 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
     @Autowired
     private SysMovieAgeMapper sysMovieAgeMapper;
     @Autowired
-    private SysMovieCategoryMapper sysMovieCategoryMapper;
+    private SysMovieCategoryService sysMovieCategoryService;
+//    @Autowired
+//    private SysMovieCategoryMapper sysMovieCategoryMapper;
+//    @Autowired
+//    private SysActorMapper sysActorMapper;
     @Autowired
-    private SysActorMapper sysActorMapper;
+    private SysActorService sysActorService;
 
     @Override
     public List<SysMovie> findAll(SysMovieVo sysMovieVo) {
@@ -141,19 +147,20 @@ public class SysMovieServiceImpl extends ServiceImpl<SysMovieMapper,SysMovie> im
     private void setValue(SysMovie m) {
         m.setSysMovieArea(sysMovieAreaMapper.selectById(m.getMovieAreaId()));
         m.setSysMovieAge(sysMovieAgeMapper.selectById(m.getMovieAgeId()));
+        m.setMovieCategoryList(sysMovieCategoryService.findByMovieId(m.getMovieId()));
+        m.setMajorActorNameList(sysActorService.findMajorActorNames(m.getMovieId()));
+//        MPJLambdaWrapper<SysMovieCategory> categoryWrapper = new MPJLambdaWrapper<>();
+//        categoryWrapper.selectAll(SysMovieCategory.class)
+//                .leftJoin(SysMovieToCategory.class,SysMovieToCategory::getMovieCategoryId,SysMovieCategory::getMovieCategoryId)
+//                .eq(SysMovieToCategory::getMovieId, m.getMovieId() );
+//        m.setMovieCategoryList(sysMovieCategoryMapper.selectList(categoryWrapper));
 
-        MPJLambdaWrapper<SysMovieCategory> categoryWrapper = new MPJLambdaWrapper<>();
-        categoryWrapper.selectAll(SysMovieCategory.class)
-                .leftJoin(SysMovieToCategory.class,SysMovieToCategory::getMovieCategoryId,SysMovieCategory::getMovieCategoryId)
-                .eq(SysMovieToCategory::getMovieId, m.getMovieId() );
-        m.setMovieCategoryList(sysMovieCategoryMapper.selectList(categoryWrapper));
-
-        MPJLambdaWrapper<SysActor> actorWrapper = new MPJLambdaWrapper<>();
-        actorWrapper.select(SysActor::getActorName)
-                .leftJoin(SysActorMovie.class,SysActorMovie::getActorId,SysActor::getActorId)
-//                .eq(SysActorMovie::getActorId, 2 )
-                .eq(SysActorMovie::getMovieId, m.getMovieId() );
-        m.setMajorActorNameList(sysActorMapper.selectJoinList(String.class, actorWrapper));
+//        MPJLambdaWrapper<SysActor> actorWrapper = new MPJLambdaWrapper<>();
+//        actorWrapper.select(SysActor::getActorName)
+//                .leftJoin(SysActorMovie.class,SysActorMovie::getActorId,SysActor::getActorId)
+////                .eq(SysActorMovie::getActorId, 2 )
+//                .eq(SysActorMovie::getMovieId, m.getMovieId() );
+//        m.setMajorActorNameList(sysActorMapper.selectJoinList(String.class, actorWrapper));
     }
 
     /**

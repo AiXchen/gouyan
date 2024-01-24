@@ -14,9 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 使用jwt过滤器作为shiro的过滤器
- * @Author: 华雨欣
- * @Create: 2020-12-09 10:48
+ * @author Aixchen
+ * @date 2024/1/24 14:40
  */
 @Slf4j
 @Component

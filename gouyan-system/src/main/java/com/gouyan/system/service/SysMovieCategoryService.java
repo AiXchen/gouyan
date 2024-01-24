@@ -20,4 +20,11 @@ public interface SysMovieCategoryService extends IService<SysMovieCategory> {
     int update(SysMovieCategory sysMovieCategory);
 
     int delete(Long[] ids);
+
+    /**
+     * 根据电影id查询所属的全部类别
+     * @param id
+     * @return
+     */
+    List<SysMovieCategory> findByMovieId(Long id);
 }

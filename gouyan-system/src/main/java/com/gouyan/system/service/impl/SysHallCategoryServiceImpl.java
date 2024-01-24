@@ -1,6 +1,9 @@
 package com.gouyan.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.yulichang.query.MPJLambdaQueryWrapper;
+import com.github.yulichang.wrapper.MPJLambdaWrapper;
+import com.gouyan.system.domin.SysHall;
 import com.gouyan.system.domin.SysHallCategory;
 import com.gouyan.system.mapper.SysHallCategoryMapper;
 import com.gouyan.system.service.SysHallCategoryService;
@@ -52,5 +55,15 @@ public class SysHallCategoryServiceImpl extends ServiceImpl<SysHallCategoryMappe
 //            rows += sysHallCategoryMapper.delete(id);
 //        }
 //        return rows;
+    }
+
+    @Override
+    public List<SysHallCategory> findByCinemaId(Long id) {
+        MPJLambdaWrapper<SysHallCategory> wrapper = new MPJLambdaWrapper<>();
+        wrapper.selectAll(SysHallCategory.class)
+                .leftJoin(SysHall.class,SysHall::getHallCategoryId,SysHallCategory::getHallCategoryId)
+                .eq(SysHall::getCinemaId, id)
+                .distinct();
+        return baseMapper.selectList(wrapper);
     }
 }

@@ -13,9 +13,8 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 演员角色实体类
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:41
+ * @author Aixchen
+ * @date 2024/1/24 17:41
  */
 @Data
 @AllArgsConstructor

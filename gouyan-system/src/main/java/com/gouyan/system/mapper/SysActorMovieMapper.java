@@ -6,8 +6,8 @@ import com.gouyan.system.domin.SysActorMovie;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-27 10:13
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 public interface SysActorMovieMapper extends MPJBaseMapper<SysActorMovie> {
     List<SysActorMovie> findAll(SysActorMovie sysActorMovie);

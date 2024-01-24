@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:53
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 @Service
 public class SysActorRoleServiceImpl extends ServiceImpl<SysActorRoleMapper,SysActorRole> implements SysActorRoleService {

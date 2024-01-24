@@ -8,9 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 从当前绑定的线程上获取请求属性
- * @Author: 华雨欣
- * @Create: 2020-11-19 16:19
+ * @author Aixchen
+ * @date 2024/1/24 17:44
  */
 public class ServletUtil {
 

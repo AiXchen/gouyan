@@ -1,9 +1,8 @@
 package com.gouyan.common.utils;
 
 /**
- * 字符串工具类，抽取一些常用操作
- * @Author: 华雨欣
- * @Create: 2020-11-19 21:18
+ * @author Aixchen
+ * @date 2024/1/24 17:44
  */
 public class StringUtil {
 

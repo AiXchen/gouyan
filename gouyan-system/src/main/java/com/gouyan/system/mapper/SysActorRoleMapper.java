@@ -7,8 +7,8 @@ import com.gouyan.system.domin.SysMovieAge;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-19 22:52
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 public interface SysActorRoleMapper extends MPJBaseMapper<SysActorRole> {
 

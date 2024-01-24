@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.gouyan.system.domin.SysBill;
 
 import java.util.List;
-
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-30 14:24
+ * @author Aixchen
+ * @date 2024/1/24 15:01
  */
 public interface SysBillService extends IService<SysBill> {
 

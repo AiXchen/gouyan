@@ -8,9 +8,8 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * 接收前端增加订单的数据
- * @Author: 华雨欣
- * @Create: 2020-11-30 16:27
+ * @author Aixchen
+ * @date 2024/1/24 17:41
  */
 @Data
 @NoArgsConstructor

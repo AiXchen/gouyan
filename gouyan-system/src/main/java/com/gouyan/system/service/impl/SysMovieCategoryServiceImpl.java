@@ -1,7 +1,9 @@
 package com.gouyan.system.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.yulichang.wrapper.MPJLambdaWrapper;
 import com.gouyan.system.domin.SysMovieCategory;
+import com.gouyan.system.domin.SysMovieToCategory;
 import com.gouyan.system.mapper.SysMovieCategoryMapper;
 import com.gouyan.system.service.SysMovieCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +56,14 @@ public class SysMovieCategoryServiceImpl extends ServiceImpl<SysMovieCategoryMap
 //            rows += sysMovieCategoryMapper.delete(id);
 //        }
 //        return rows;
+    }
+
+    @Override
+    public List<SysMovieCategory> findByMovieId(Long id) {
+        MPJLambdaWrapper<SysMovieCategory> categoryWrapper = new MPJLambdaWrapper<>();
+        categoryWrapper.selectAll(SysMovieCategory.class)
+                .leftJoin(SysMovieToCategory.class,SysMovieToCategory::getMovieCategoryId,SysMovieCategory::getMovieCategoryId)
+                .eq(SysMovieToCategory::getMovieId, id );
+        return baseMapper.selectList(categoryWrapper);
     }
 }

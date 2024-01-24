@@ -12,8 +12,8 @@ import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-12-03 16:56
+ * @author Aixchen
+ * @date 2024/1/24 17:42
  */
 @ToString
 @NoArgsConstructor

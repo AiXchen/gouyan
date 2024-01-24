@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-23 15:34
+ * @author Aixchen
+ * @date 2024/1/24 17:38
  */
 @Mapper
 public interface SysActorMapper extends MPJBaseMapper<SysActor>{

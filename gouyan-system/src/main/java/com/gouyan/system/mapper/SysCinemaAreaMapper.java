@@ -6,8 +6,8 @@ import com.gouyan.system.domin.SysCinemaArea;
 import java.util.List;
 
 /**
- * @Author: 华雨欣
- * @Create: 2020-11-20 09:08
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 public interface SysCinemaAreaMapper extends MPJBaseMapper<SysCinemaArea> {
 

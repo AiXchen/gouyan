@@ -1,9 +1,8 @@
 package com.gouyan.common.file;
 
 /**
- * 媒体类型工具类
- * 
- * @author ruoyi
+ * @author Aixchen
+ * @date 2024/1/24 17:43
  */
 public class MimeTypeUtils
 {

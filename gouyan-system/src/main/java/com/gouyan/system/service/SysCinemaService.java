@@ -7,8 +7,8 @@ import com.gouyan.system.domin.vo.SysCinemaVo;
 import java.util.List;
 
 /**
- * @author lxd
- * @create 2020-11-25 22:24
+ * @author Aixchen
+ * @date 2024/1/24 17:39
  */
 public interface SysCinemaService extends IService<SysCinema> {
 

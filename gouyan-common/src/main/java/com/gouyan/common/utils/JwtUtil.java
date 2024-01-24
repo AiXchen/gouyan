@@ -10,7 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Date;
 
 /**
- * 签名与校验token工具类
+ * @author Aixchen
+ * @date 2024/1/24 17:43
  */
 @Slf4j
 public class JwtUtil {

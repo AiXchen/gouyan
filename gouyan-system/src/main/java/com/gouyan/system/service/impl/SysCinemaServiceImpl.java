@@ -6,7 +6,7 @@ import com.gouyan.common.utils.StringUtil;
 import com.gouyan.system.domin.*;
 import com.gouyan.system.domin.vo.SysCinemaVo;
 import com.gouyan.system.mapper.SysCinemaMapper;
-import com.gouyan.system.service.SysCinemaService;
+import com.gouyan.system.service.*;
 import jdk.nashorn.internal.runtime.StoredScript;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,23 +16,43 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author lxd
- * @create 2020-11-25 22:24
+ * @author Aixchen
+ * @date 2024/1/24 15:29
  */
 @Service
 public class SysCinemaServiceImpl extends ServiceImpl<SysCinemaMapper,SysCinema> implements SysCinemaService{
 
     @Autowired
     private SysCinemaMapper sysCinemaMapper;
-
+    @Autowired
+    private SysUserService sysUserService;
+    @Autowired
+    private SysCinemaBrandService sysCinemaBrandService;
+    @Autowired
+    private SysCinemaAreaService sysCinemaAreaService;
+    @Autowired
+    private SysHallCategoryService sysHallCategoryService;
+    @Autowired
+    private SysMovieService sysMovieService;
 
     @Override
     public List<SysCinema> findAll(SysCinemaVo sysCinemaVo) {
         MPJLambdaWrapper<SysCinema> wrapper = new MPJLambdaWrapper<>();
         wrapper.selectAll(SysCinema.class);
         addCondition(wrapper,sysCinemaVo);
-        return baseMapper.selectList(wrapper);
+        List<SysCinema> sysCinemas = baseMapper.selectList(wrapper);
+        for(SysCinema c : sysCinemas){
+            setValue(c);
+        }
+        return sysCinemas;
 //        return sysCinemaMapper.findAll(sysCinemaVo);
+    }
+
+    private void setValue(SysCinema c) {
+        c.setUser(sysUserService.findById(c.getUserId()));
+        c.setSysCinemaBrand(sysCinemaBrandService.findById(c.getCinemaBrandId()));
+        c.setSysCinemaArea(sysCinemaAreaService.findById(c.getCinemaAreaId()));
+        c.setSysHallCategoryList(sysHallCategoryService.findByCinemaId(c.getCinemaId()));
     }
 
     private void addCondition(MPJLambdaWrapper<SysCinema> wrapper, SysCinemaVo sysCinemaVo) {
@@ -61,7 +81,9 @@ public class SysCinemaServiceImpl extends ServiceImpl<SysCinemaMapper,SysCinema>
 
     @Override
     public SysCinema findById(Long id) {
-        return baseMapper.selectById(id);
+        SysCinema cinema = baseMapper.selectById(id);
+        setValue(cinema);
+        return cinema;
 //        return sysCinemaMapper.findById(id);
     }
 
@@ -89,19 +111,13 @@ public class SysCinemaServiceImpl extends ServiceImpl<SysCinemaMapper,SysCinema>
 
     @Override
     public SysCinema findCinemaById(Long id) {
-//        MPJLambdaWrapper<SysCinema> wrapper = new MPJLambdaWrapper<>();
-//        wrapper.selectAll(SysCinema.class)
-//                .leftJoin(SysUser.class,SysUser::getUserId,SysCinema::getUserId)
-//                .leftJoin(SysCinemaBrand.class,SysCinemaBrand::getCinemaBrandId,SysCinema::getCinemaBrandId)
-//                .leftJoin(SysCinemaArea.class,SysCinemaArea::getCinemaAreaId,SysCinema::getCinemaAreaId)
-//                .leftJoin(SysSession.class,SysSession::getCinemaId,SysCinema::getCinemaId)
-//                .leftJoin(SysMovie.class,SysMovie::getMovieId,SysSession::getMovieId)
-//                .selectAssociation(SysUser.class, SysCinema::getUser)
-//                .selectAssociation(SysCinemaBrand.class, SysCinema::getSysCinemaBrand)
-//                .selectAssociation(SysCinemaArea.class,SysCinema::getSysCinemaArea)
-//                .selectCollection(SysMovie.class, SysCinema::getSysMovieList);
-//        return baseMapper.selectOne(wrapper);
-
-        return sysCinemaMapper.findCinemaById(id);
+        SysCinema cinema = baseMapper.selectOne(new MPJLambdaWrapper<SysCinema>()
+                .eq(SysCinema::getCinemaId, id));
+        cinema.setUser(sysUserService.findById(cinema.getUserId()));
+        cinema.setSysCinemaBrand(sysCinemaBrandService.findById(cinema.getCinemaBrandId()));
+        cinema.setSysCinemaArea(sysCinemaAreaService.findById(cinema.getCinemaAreaId()));
+        cinema.setSysMovieList(sysMovieService.findByCinemaId(cinema.getCinemaId()));
+        return cinema;
+//        return sysCinemaMapper.findCinemaById(id);
     }
 }
